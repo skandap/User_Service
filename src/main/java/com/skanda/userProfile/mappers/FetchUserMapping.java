@@ -13,7 +13,7 @@ public class FetchUserMapping {
                 .userId(user.getUserId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .phone(user.getPhoneNumber())
+                .phoneNumber(user.getPhoneNumber())
                 .age(user.getAge())
                 .createdAt(user.getCreatedAt())
                 .build();
