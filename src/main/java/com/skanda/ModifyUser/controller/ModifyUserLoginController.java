@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.*;
 public class ModifyUserLoginController {
 
     @Autowired
-    public ModifyUserServiceImpl userService;
+    private ModifyUserServiceImpl userService;
 
     @PutMapping("/modify/{userId}")
-    public ResponseEntity<ModifyUserResponse> fetchUserLogin(@PathVariable Long userId, @RequestBody ModifyUserRequest modifyUserRequest) {
-            return new ResponseEntity<>(userService.modifyDetailsById(userId,modifyUserRequest), HttpStatus.OK);
+    public ResponseEntity<ModifyUserResponse> modifyUser(
+            @PathVariable Long userId,
+            @RequestBody ModifyUserRequest modifyUserRequest) {
+        return new ResponseEntity<>(userService.modifyDetailsById(userId, modifyUserRequest), HttpStatus.OK);
     }
-
 }
+

@@ -18,5 +18,4 @@ public class InquireGlobalExceptionalHandler {
         error.put("message", ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
-
 }

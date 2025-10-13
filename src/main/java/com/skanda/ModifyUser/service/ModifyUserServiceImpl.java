@@ -13,16 +13,22 @@ import org.springframework.stereotype.Service;
 public class ModifyUserServiceImpl implements ModifyUserService {
 
     @Autowired
-    public UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public ModifyUserMapping userMapping;
+    private ModifyUserMapping userMapping;
 
     @Override
     public ModifyUserResponse modifyDetailsById(Long userId, ModifyUserRequest modifyUserRequest) {
-        UserEntity user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("No user found"));
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No user found"));
+
         UserEntity updatedUser = userMapping.mapToUser(user, modifyUserRequest);
         userRepository.save(updatedUser);
-        return ModifyUserResponse.builder().message("User of id " + userId + " updated successfully").build();
+
+        return ModifyUserResponse.builder()
+                .message("User of id " + userId + " updated successfully")
+                .build();
     }
 }
+

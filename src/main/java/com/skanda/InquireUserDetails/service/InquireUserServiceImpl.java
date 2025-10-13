@@ -19,7 +19,7 @@ public class InquireUserServiceImpl implements InquireUserService {
 
     @Override
     public InquireUserResponse inquireUserDetailsById(Long userId) {
-        UserEntity user = userRepository.findById(userId).orElseThrow(()->new UserNotFoundException("No user found"));
+        UserEntity user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("No user found"));
         return userMapping.userEntityToResponse(user);
     }
 }

@@ -4,5 +4,5 @@ import com.skanda.userProfile.entity.FetchUserResponse;
 
 public interface FetchUserService {
 
-    FetchUserResponse fetchDetailsById(String authHeader);
+    FetchUserResponse fetchDetailsById(Long userId);
 }

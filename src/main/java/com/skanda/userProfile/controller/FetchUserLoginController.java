@@ -2,25 +2,28 @@ package com.skanda.userProfile.controller;
 
 import com.skanda.userProfile.entity.FetchUserResponse;
 import com.skanda.userProfile.service.FetchUserServiceImpl;
+import com.skanda.util.jwt.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/user")
 public class FetchUserLoginController {
 
     @Autowired
-    public FetchUserServiceImpl userService;
+    private FetchUserServiceImpl userService;
+
+    @Autowired
+    private JwtService jwtService;
 
     @GetMapping("/profile")
-    public ResponseEntity<FetchUserResponse> fetchUserLogin(@RequestHeader("Authorization") String authHeader) {
-        if (authHeader != null) {
-            return new ResponseEntity<>(userService.fetchDetailsById(authHeader), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<FetchUserResponse> fetchUserLogin(@RequestHeader("Authorization") String token) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        Long userId = jwtService.extractUserId(jwtToken);
+        FetchUserResponse response = userService.fetchDetailsById(userId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

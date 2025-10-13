@@ -17,18 +17,19 @@ public class UserEntity {
 
     @Id
     private Long userId;
+
     private String name;
     private String email;
     private String phoneNumber;
     private int age;
     private String password;
     private LocalDateTime createdAt;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
-
-    //@PrePersist “Before saving this entity into the database for the first time, run this method.”
-    //It helps you set default values or perform logic automatically before the INSERT SQL happens
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @PrePersist
     public void prePersist() {
