@@ -28,24 +28,24 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        // ✅ allow public endpoints
+                        // allow public endpoints
                         .requestMatchers(
                                 "/user/register-user",
                                 "/user/login-user",
                                 "/internal/**"   // <- allow all internal APIs
                         ).permitAll()
 
-                        // ✅ protect these by role
+                        //  protect these by role
                         .requestMatchers("/user/profile").hasAnyAuthority("USER", "ADMIN")
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
 
-                        // ✅ any other endpoint requires authentication
+                        // any other endpoint requires authentication
                         .anyRequest().authenticated()
                 )
-                // ✅ stateless session (no cookies)
+                //  stateless session (no cookies)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(daoAuthenticationProvider())
-                // ✅ JWT filter comes before UsernamePasswordAuthenticationFilter
+                // JWT filter comes before UsernamePasswordAuthenticationFilter
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

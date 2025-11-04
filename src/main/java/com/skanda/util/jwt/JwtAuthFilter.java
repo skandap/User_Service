@@ -30,7 +30,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // ✅ Skip JWT for internal or open endpoints
+        //  Skip JWT for internal or open endpoints
         if (path.startsWith("/user/register-user")
                 || path.startsWith("/user/login-user")
                 || path.startsWith("/internal/")) {
