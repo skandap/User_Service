@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
             UserEntity saved = userRepository.save(user);
             return userMapping.userEntityToResponse(saved);
         } catch (Exception e) {
-            e.printStackTrace(); // this will print the exact cause in console
+            e.printStackTrace();
             throw new RuntimeException("Failed to register user: " + e.getMessage());
         }
     }
