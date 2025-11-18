@@ -1,7 +1,7 @@
 package com.skanda.ModifyUser.Mappers;
 
 import com.skanda.ModifyUser.entity.ModifyUserRequest;
-import com.skanda.util.entity.Status;
+import com.skanda.util.entity.Enums.Status;
 import com.skanda.util.entity.UserEntity;
 import org.springframework.stereotype.Component;
 

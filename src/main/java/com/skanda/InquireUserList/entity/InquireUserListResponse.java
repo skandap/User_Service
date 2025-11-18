@@ -1,5 +1,5 @@
 package com.skanda.InquireUserList.entity;
-import com.skanda.util.entity.Status;
+import com.skanda.util.entity.Enums.Status;
 import lombok.*;
 
 import java.time.LocalDateTime;

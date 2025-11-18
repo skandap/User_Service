@@ -3,7 +3,7 @@ package com.skanda.registerUser.Mappers;
 
 import com.skanda.registerUser.entity.UserRequest;
 import com.skanda.registerUser.entity.UserResponse;
-import com.skanda.util.entity.Role;
+import com.skanda.util.entity.Enums.Role;
 import com.skanda.util.entity.UserEntity;
 import org.springframework.stereotype.Component;
 

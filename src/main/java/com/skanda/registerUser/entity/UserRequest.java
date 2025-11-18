@@ -1,6 +1,6 @@
 package com.skanda.registerUser.entity;
 
-import com.skanda.util.entity.Role;
+import com.skanda.util.entity.Enums.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
 

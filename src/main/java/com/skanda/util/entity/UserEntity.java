@@ -1,5 +1,7 @@
 package com.skanda.util.entity;
 
+import com.skanda.util.entity.Enums.Role;
+import com.skanda.util.entity.Enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
